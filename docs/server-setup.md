@@ -16,8 +16,8 @@ Copy content from [./mc-explorer.org.conf](./mc-explorer.org.conf) into `/etc/ng
     certbot --nginx -d mc-explorer.org
     cd /etc/ssl/certs
     openssl dhparam -out dhparam.pem 4096
-    cd /home/bitcoin
-    git clone https://github.com/janoside/btc-rpc-explorer.git
-    cd /home/bitcoin/btc-rpc-explorer
+    cd 
+    git clone https://github.com/lexa044/mining-core-explorer.git
+    cd mining-core-explorer
     npm install
-    pm2 start bin/www --name "btc-rpc-explorer"
+    pm2 start bin/www --name "mining-core-explorer"
