@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Betchip Mining Pool (BTP)</title>
+  <meta property="og:title" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support."/>
+  <meta name="twitter:card" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support.">
+  <meta name="description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support."/>
+  <meta name="og:description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support."/>
+  <meta itemprop="description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support.">
+  <meta name="twitter:description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support.">
+  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato|Open+Sans|Cousine|Ubuntu:400,500,700' />
+  <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <span>
+          <img class="header-image" src="/images/btc.svg">
+          <span>Betchip</span>
+        </span>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <span>Home</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+      <div class="content article">
+        <h5>Do I need to register an account to mine?</h5>
+        <p>Registration is not required. Just configure your miner according to our instructions and start mining. Your first submitted
+          share will automatically register you with our pool. Good Luck!</p>
+      
+      
+        <h5>Why is my reported hashrate zero or different from what my miner reports?</h5>
+        <p>Pool and miner hashrates are re-calculated every ten minutes. Therefore it can take a maximum of ten minutes for your hashrate
+          to update depending on the submission time of your first valid share. The hashrate we display at the pool is a rough
+          approximation of your hashrate based on your submitted shares and can therefore differ significantly from the hashrate
+          displayed locally. When in doubt always consider the value displayed by your miner as the correct one.</p>
+      
+      
+        <h5 id="payments">How will I get paid?</h5>
+        <p>All of our pools utilize the PPLNS payment system. PPLNS is short for "Pay Per Last N Shares". The image below illustrates
+          the system. One round has an arbitrary number of shares which is solely based on sheer luck. Proportional reward systems
+          only consider shares of one round when calculating rewards. PPLNS however, uses a quite constant number N of shares for
+          calculating rewards. This number N changes only with the difficulty:</p>
+        <p>
+          <img src="/images/shares_round.png" alt="PPLNS">
+        </p>
+        <p>As you know the number of shares needed to solve a block within a round is different. Round one and three needed
+          <em>(difficulty * 2)</em> shares to be solved. Round two and four are quite short rounds. There were less than
+          <em>(difficulty * 2)</em> shares necessary to solve them. Round five however is a very long round which means the pool needed
+          more than
+          <em>(difficulty * 2)</em> shares to solve the block. From this follows that:</p>
+        <ul>
+          <li>Rounds one and three are like proportional rounds. All of your shares from the given round are considered for reward
+            calculations</li>
+          <li>For rounds two and four, shares from the previous rounds are considered for calculations as well (marked green). In other
+            words: regardless of round boundaries we always consider the last
+            <em>(difficulty * 2)</em> shares. Your portion of the amount of shares is used to calculate your reward.</li>
+          <li>Round five however is very long. In this round your lowermost shares (within the marked red part) are silently dropped
+            if they are not within the last
+            <em>(difficulty * 2)</em> shares.</li>
+        </ul>
+        <p>
+          <strong>PPLNS favors constant and/or occasional loyal pool members over pool hoppers.</strong> Pool hoppers are betting for a
+          "quick win" (like round two above) with low shares per round. If the round exceeds a certain amount of shares they "hop"
+          to another proportional pool which started a new round more recently. This assures better rewards for pool hoppers over
+          occasional or constant miners which are loyal to their pool. Pool hopping however implies that pool hoppers need to know
+          when a round is started and how much shares are considered for reward. This is very easy with proportional reward system.
+          While using PPLNS, this is no longer true. On long rounds (like round five above) the pool hoppers shares won’t be considered
+          for reward calculations in favor of loyal miners. This is due to the fact that pool hoppers only mine on the beginning
+          of rounds. On short and normal rounds pool hoppers won’t lose their shares. Due to the fact that shares from previous
+          rounds from loyal miners are considered
+          <strong>twice</strong> (or even more often on extremely short rounds) the pool hopper won’t get the same reward as from proportional
+          reward system.</p>
+        <p>Assuming blocks have been found, payouts are processed and send every hour. This process is fully automated.</p>
+      
+      
+        <h5 id="payments">When will I get paid?</h5>
+        <p>You won't see any balance in your account until a block has been found by the pool and after the block has reached a mature
+          status. This may take a couple hours, depending on the coin. As soon as a block can be considered 'mature' by the pool,
+          your shares will be used to calculate your contribution towards finding the block. The more you've contributed, the higher
+          your cut of the block reward will be. Your cut of the block reward will then be credited to your pending balance. If
+          your balance reaches or exceeds the pool's minimum payout amount, the pool will transfer your
+          <b>entire</b> balance to your wallet and
+          <b>reset</b> your pending balance to zero. The minimum payout for each pool is listed in its 'Pool Stats' area.</p>
+        <p>We are a small pool for the time being, and as such it may take some time to find a block. On larger pools you would see
+          some balance earlier because they will find blocks faster, but you will get a smaller share of the reward than what you
+          would in a smaller pool. Over time you will earn more or less the same amount when mining on a large pool or on a small
+          one.</p>
+        <p>In other words, the rewards you get on average are exactly proportional to your part in the total work done by the pool.
+          If you mine in a pool
+          <strong>twice as large</strong>, the pool will collect twice as much rewards but your share in them will be
+          <strong>cut by half</strong>, meaning you get the same on average.</p>
+        <p>Trustworthiness, reliability, support and low latency are the things you should consider when choosing a pool. By avoiding
+          the largest pools you contribute to the network health by spreading the hash power.</p>
+      
+      
+        <h5>I have another pool related question not answered here. How can I contact the pool operator?</h5>
+        <p>For pool related questions or suggestions, feel free to send a direct-message on
+          <a href="https://twitter.com/coinfoundryorg">Twitter</a> or visit the pool's
+          <a href="http://feedback.coinfoundry.org/">Support-Site</a>.</p>
+      </div>
+      <div style="margin-bottom: 30px;"></div>
+
+      <footer class="footer bg-dark text-light pt-3 pb-1 px-3" style="margin-top: 50px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <dl>
+                <dt>Source</dt>
+                <dd>
+                  <a href="https://github.com/lexa044/mining-core-explorer">github.com/lexa044/mining-core-explorer</a>
+                </dd>
+                <dt>Running Version</dt>
+                <dd>
+                  <a href="https://github.com/lexa044/mining-core-explorer/commit/9ce4c862a7">9ce4c862a7</a>
+                  <span style="color: #ccc;"> (2018-06-10)</span>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-7 text-md-right">
+            </div>
+          </div>
+        </div>
+      </footer>      
+  </div>
+  <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+
+</html>

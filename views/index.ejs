@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mcApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Betchip Mining Pool (BTP)</title>
+  <meta property="og:title" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support."/>
+  <meta name="twitter:card" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support.">
+  <meta name="description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support."/>
+  <meta name="og:description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support."/>
+  <meta itemprop="description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support.">
+  <meta name="twitter:description" content="The profitable and reliable Betchip mining pool with competitive fees, server locations accross the globe and beginner-friendly support.">
+  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato|Open+Sans|Cousine|Ubuntu:400,500,700' />
+  <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <span>
+          <img class="header-image" src="/images/btc.svg">
+          <span>Betchip</span>
+        </span>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/faq">
+              <span>FAQ</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" ng-controller="PoolController as poolList">
+    <h2>Betchip Mining Pool (BTP)</h2>
+    <hr/>
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+        <h4 class="title">Hash Rate</h4>
+        <div id="chartStatsHashRate" style="width:98%;">
+          <canvas id="chart" height="50"></canvas>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-lg-8 col-sm-8">
+        <ul class="nav nav-tabs mb-3">
+          <li class="nav-item">
+            <a class="nav-link active show" data-toggle="tab" href="#tab_getting_started" role="tab" aria-selected="true">Getting Started</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tab_blocks" role="tab" aria-selected="false">Blocks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tab_payments" role="tab" aria-selected="false">Payments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tab_top_miners" role="tab" aria-selected="false">Top Miners(24h)</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab_getting_started" role="tabpanel">
+            <br>
+            <div id="stratums">
+              <h3>
+                <a href="https://coinfoundry.org/pool/eth#assistant" target="_blank">
+                  <i aria-hidden="true" class="fa fa-plug"></i> Stratum Configuration (Advanced Miners)
+                </a>
+              </h3>
+              <table class="table stratums">
+                <tbody>
+                  <tr>
+                    <td class="url">stratum+tcp://eth.coinfoundry.org:3072</td>
+                    <td class="info">GPU Mining</td>
+                  </tr>
+                  <tr>
+                    <td class="url">stratum+tcp://eth.coinfoundry.org:3073</td>
+                    <td class="info">High-End Multi GPU Mining</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Login using your wallet address as username. An optional workername can be appended to your address separated by a dot
+                character. Leave the password blank.
+                <br>
+                <br>
+                <b>Example: </b>
+                <code>&lt;WALLET ADDRESS&gt;</code>.
+                <code>&lt;WORKER&gt;</code>
+              </p>
+              <p>
+                <b>Stratum Protocol Configuration</b>
+                <br>
+              </p>
+              <ul>
+                <li>Claymore Miner: Add the
+                  <code>-esm 3</code> command line switch</li>
+                <li>Ethminer/Genoil: Add the
+                  <code>-SP 2</code> command line switch</li>
+              </ul>
+              <p></p>
+              <p>
+                <b>SSL/TLS</b>: To connect using SSL/TLS please add 2 to the respective port number. For ccminer, claymore and sgminer change
+                the protocol from
+                <code>stratum+tcp://</code> to
+                <code>stratum+ssl://</code>. For dstm's Miner change the protocol from
+                <code>stratum+tcp://</code> to
+                <code>ssl://</code>. XMRig does
+                <b>not</b> currently support SSL.</p>
+              <br>
+            </div>
+            <div id="miner-config">
+              <h3>Miner Configuration</h3>
+              <p>If already have a miner you need to add or modify a command line switch to make the miner communicate using the
+                <a href="https://github.com/nicehash/Specifications/blob/master/EthereumStratum_NiceHash_v1.0.0.txt">correct stratum protocol</a> with our pool:</p>
+              <ul>
+                <li>Claymore Miner: Add the
+                  <code>-esm 3</code> command line switch</li>
+                <li>Genoil's Miner: Add the
+                  <code>-SP 2</code> command line switch</li>
+              </ul>
+            </div>
+            <br>
+            <div id="wallet-setup">
+              <h3>
+                <i aria-hidden="true" class="fa fa-credit-card"></i> Getting a Wallet</h3>
+              <p>Before you can start to mine you need to create a wallet. Although Ethereum is an entirely digital asset, you still need
+                a place to store them. This is done in a digital wallet. There are multiple methods to obtain a wallet which vary by
+                ease of use and the security they provide.</p>
+              <h4>Exodus Wallet</h4>
+              <p>
+                <a href="#" data-featherlight="/images/exodus-wallet.jpg">
+                  <img src="/images/exodus-wallet.jpg" alt="Exodus Wallet" title="Exodus Wallet" style="width: 100%;">
+                </a>
+              </p>
+              <p>
+                <a href="https://www.exodus.io/">Exodus</a> is the a desktop multi-asset wallet with built in ShapeShift support for converting between crypto-currencies.
+                The application is comfortable to use available for Windows, macOS and Linux. One of the best features of this multi-currency
+                wallet the client-side encryption of your private keys which means you stay in full control of your keys which never
+                leave your machine in unencrypted form.</p>
+              <h4>Hardware Wallets</h4>
+              <p>
+                <a href="#" data-featherlight="/images/hw-wallet.jpg">
+                  <img src="/images/hw-wallet.jpg" alt="Trezor" title="Trezor" style="width: 100%;">
+                </a>
+              </p>
+              <p>A hardware wallet is a special type of wallet which stores the user's private keys in a secure hardware device. Hardware
+                wallets offer robust safety features for storing cryptographic assets and securing digital payments. Popular hardware
+                wallets are the
+                <a href="https://www.ledgerwallet.com/r/1542?path=/products/ledger-nano-s">Ledger Nano S</a> and the
+                <a href="https://shop.trezor.io/">Trezor</a>.</p>
+              <h4>Paper Wallets</h4>
+              <p>For long-term storage of Ethereum you should create a cold wallet using
+                <a href="https://www.myetherwallet.com/">MyEtherWallet</a> or similar. A paper wallet is extremely secure if you guard your ethereum private key by storing it
+                in a password vault such as KeePass or LastPass or printing it out and depositing the sheet in a real bank vault.</p>
+              <h4>Registering with an exchange</h4>
+              <p>There are multiple digital currency exchanges you can register with. Registering with an exchange allows you to create
+                a wallet on the exchange for every currency the exchange supports. Registering with an exchange is probably the most
+                convenient way to obtain a wallet. Unfortunately it is also the least secure one. Exchanges have been hacked in the past!</p>
+              <p>Popular exchanges supporting Ethereum are:
+                <a href="https://bittrex.com/">Bittrex</a>,
+                <a href="https://poloniex.com/">Poloniex</a>,
+                <a href="https://www.kraken.com/">Kraken</a>,
+                <a href="https://www.bitfinex.com/">Bitfinex</a> and
+                <a href="https://hitbtc.com/">HitBTC</a>.</p>
+            </div>
+              
+          </div>
+          <div class="tab-pane" id="tab_blocks" role="tabpanel">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Found</th>
+                  <th scope="col">Height</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Reward</th>
+                  <th scope="col">Difficulty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="block in poolList.blocks track by block.blockHeight">
+                  <td>{{::block.created}}</td>
+                  <td>
+                    <a href="{{::block.infoLink}}" target="_blank">
+                      {{::block.blockHeight}}
+                  </a>                    
+                  </td>
+                  <td>{{::block.status}}</td>
+                  <td>{{::block.reward}}</td>
+                  <td>{{::block.networkDifficulty}}</td>
+                </tr>
+              </tbody>
+            </table>            
+          </div>
+          <div class="tab-pane" id="tab_payments" role="tabpanel">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Sent</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="payment in poolList.payments track by payment.transactionConfirmationData">
+                  <td>{{::payment.created}}</td>
+                  <td>
+                    <a href="{{::payment.transactionInfoLink}}" target="_blank">
+                      {{::payment.amount}}
+                  </a>                    
+                  </td>
+                  <td>
+                    <a href="{{::payment.addressInfoLink}}" target="_blank">
+                      {{::payment.address}}
+                  </a>                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>                    
+          </div>
+          <div class="tab-pane" id="tab_top_miners" role="tabpanel">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Miner</th>
+                  <th scope="col">Hashrate</th>
+                  <th scope="col">Sharerate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="miner in poolList.miners track by miner.miner">
+                  <td>
+                    <a href="{{::miner.walletInfoLink}}" target="_blank">
+                      {{::miner.miner}}
+                  </a>                    
+                  </td>
+                  <td>
+                    {{::miner.hashrate}}                  
+                  </td>
+                  <td>
+                    {{::miner.sharesPerSecond}}                  
+                  </td>
+                </tr>
+              </tbody>
+            </table>                    
+          </div>          
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+          <ul class="nav nav-tabs mb-3">
+              <li class="nav-item">
+                <a class="nav-link active show" data-toggle="tab" href="#tab_pool_stats" role="tab" aria-selected="true">Pool Stats</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab_my_stats" role="tab" aria-selected="false">My Stats</a>
+              </li>
+            </ul>
+    
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab_pool_stats" role="tabpanel">
+                  <table class="table table-sm">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Miners</th>
+                        <td>{{poolList.stats.connectedMiners}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Hashrate</th>
+                        <td>{{poolList.stats.hashrate}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Network Difficulty</th>
+                        <td>{{poolList.stats.networkDifficulty}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Algorithm</th>
+                        <td>{{poolList.stats.coinAlgorithm}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Payment System</th>
+                        <td>
+                            <a href="/faq#payments" target="_blank">
+                                {{poolList.stats.payoutScheme}}
+                            </a>                          
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Fee</th>
+                        <td>{{poolList.stats.poolFeePercent}}%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Minimum Payout</th>
+                        <td>{{poolList.stats.minimumPayment}} {{poolList.stats.coinSymbol}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Miner Earnings</th>
+                        <td>{{poolList.stats.totalPaid}} {{poolList.stats.coinSymbol}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pool Wallet</th>
+                        <td>
+                          <a href="{{poolList.stats.addressInfoLink}}" target="_blank">
+                              {{poolList.stats.address}}
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div class="tab-pane" id="tab_my_stats" role="tabpanel">
+                  <table class="table table-sm" ng-if="poolList.minerInfo">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Hashrate</th>
+                          <td>{{poolList.minerInfo.minerHashRate}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Shares</th>
+                          <td>{{poolList.minerInfo.pendingShares}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Balance</th>
+                          <td>{{poolList.minerInfo.pendingBalance}} {{poolList.stats.coinSymbol}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Earned</th>
+                            <td>{{poolList.minerInfo.paidBalance}} {{poolList.stats.coinSymbol}}</td>
+                          </tr>
+                          <tr>
+                          <th scope="row">Last Payment</th>
+                          <td>
+                              <a href="{{poolList.minerInfo.lastPaymentLink}}" target="_blank">
+                                  {{poolList.minerInfo.lastPayment}}
+                              </a>                          
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table> 
+                    <h6 ng-if="poolList.minerInfo">Workers</h6>
+                    <table class="table table-sm" ng-if="poolList.minerInfo">
+                        <tbody>
+                          <tr ng-repeat="worker in poolList.minerInfo.workers">
+                            <td>{{::worker.label}}</td>
+                            <td>{{::worker.hashrate}}</td>
+                          </tr>
+                        </tbody>
+                      </table>                                 
+                  <div class="input-group input-group-sm">
+                    <input class="form-control form-control-sm" type="text" name="walletAddress" placeholder="Enter your wallet address" aria-label="Enter your wallet address" ng-model="walletAddress">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="submit" ng-click="poolList.getMinerInfo(walletAddress)">
+                          <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+              </div>
+            </div>        
+      </div>
+    </div>
+    <div style="margin-bottom: 30px;"></div>
+    <footer class="footer bg-dark text-light pt-3 pb-1 px-3" style="margin-top: 50px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <dl>
+              <dt>Source</dt>
+              <dd>
+                <a href="https://github.com/lexa044/mining-core-explorer">github.com/lexa044/mining-core-explorer</a>
+              </dd>
+              <dt>Running Version</dt>
+              <dd>
+                <a href="https://github.com/lexa044/mining-core-explorer/commit/9ce4c862a7">9ce4c862a7</a>
+                <span style="color: #ccc;"> (2018-06-10)</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="col-md-7 text-md-right">
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+  <script src="/javascripts/loader.js"></script>
+</body>
+</html>

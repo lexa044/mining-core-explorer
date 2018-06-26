@@ -39,3 +39,4 @@ The below instructions are geared toward BTC, but can be adapted easily to other
 2. https://github.com/coinfoundry/miningcore
 3. https://coinfoundry.org/pool/eth
 4. https://github.com/apigee/ApigeeEdge-Node-SDK
+5. https://github.com/calvintam236/miningcore-ui
