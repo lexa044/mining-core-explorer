@@ -32,3 +32,10 @@ The below instructions are geared toward BTC, but can be adapted easily to other
 5. `npm start` to start the local server
 6. Visit http://127.0.0.1:3002/
 
+
+## References
+
+1. https://github.com/janoside/btc-rpc-explorer
+2. https://github.com/coinfoundry/miningcore
+3. https://coinfoundry.org/pool/eth
+4. https://github.com/apigee/ApigeeEdge-Node-SDK
