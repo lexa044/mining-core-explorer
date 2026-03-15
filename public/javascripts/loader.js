@@ -110,7 +110,7 @@ angular.module('mcApp', [])
                 var workers = [];
                 $.each(data.performance.workers, function (index, value) {
                     workerHashRate += value.hashrate;
-                    workers.push({"label": "Unnamed", "hashrate": _formatter(value.hashrate, 5, 'H/s')});
+                    workers.push({"label": index, "hashrate": _formatter(value.hashrate, 5, 'H/s')});
                 });
                 vm.minerInfo['pendingShares'] = _formatter(data.pendingShares, 0, '');
                 vm.minerInfo['minerHashRate'] = _formatter(workerHashRate, 5, 'H/s');
